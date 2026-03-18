@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* High contrast utility classes for timer states */
+.timer-work-bg {
+  @apply bg-timer-work dark:bg-timer-work-dark;
+}
+
+.timer-rest-bg {
+  @apply bg-timer-rest dark:bg-timer-rest-dark;
+}
+
+.timer-idle-bg {
+  @apply bg-timer-idle dark:bg-timer-idle-dark;
+}
+
+.timer-finished-bg {
+  @apply bg-timer-finished dark:bg-timer-finished-dark;
+}
+
+/* Large text for timer display */
+.timer-display-text {
+  @apply text-timer-4xl font-bold tracking-tighter;
+}
+
+/* Mobile touch optimization */
+.touch-target {
+  @apply min-h-[44px] min-w-[44px];
+}
