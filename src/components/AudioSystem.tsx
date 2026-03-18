@@ -66,16 +66,12 @@ export default function AudioSystem({
       setAudioError('Failed to initialize audio system');
     }
 
-    // Cleanup function
+    // Cleanup function - don't interrupt playback
     return () => {
-      if (gongAudioRef.current) {
-        gongAudioRef.current.pause();
-        gongAudioRef.current = null;
-      }
-      if (beepsAudioRef.current) {
-        beepsAudioRef.current.pause();
-        beepsAudioRef.current = null;
-      }
+      // Don't call pause() - let audio play to completion
+      // Just clear the refs to prevent memory leaks
+      gongAudioRef.current = null;
+      beepsAudioRef.current = null;
     };
   }, [onAudioComplete, volume]);
 
